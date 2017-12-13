@@ -14,7 +14,7 @@ Prefered form is to run the nodes with colocation in high security datacenters l
 
 Since consensus nodes are the ones computing the network hardware requirements need to be reviewed periodically to guarantee that performance is optimal.
 
-If colocation is not a possible the recomended IaaS providers and configurations are listed bellow:
+If colocation is not possible the recomended IaaS providers and configurations are listed bellow:
 
 - [OVH EG-32](https://www.ovh.com/us/dedicated-servers/infra/1801eg02.xml)
   - CPU: Intel  Xeon E3-1270v6 - 4c/8t - 3.8GHz
