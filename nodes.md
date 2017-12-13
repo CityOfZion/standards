@@ -32,9 +32,25 @@ Since consensus nodes are the ones computing the network hardware requirements n
   - SSD: softraid-1 2x240GB Enterprise SSD
   - NET: 2 x 1 Gbps Bonded
  
- ## SSH authentication keys
- Yubikey 4/NEO have support for OpenPGP, that can be used for logging in to remote SSH servers.
- Guides for all main Operational Systems [can be found here](https://developers.yubico.com/PGP/SSH_authentication/)
+## SSH authentication keys
+Is required the use a OpenPGP SmartCard for SSH authentication. We recomend Yubikey 4/NEO.
+ - Full [Windows guide](https://developers.yubico.com/PGP/SSH_authentication/Windows.html)
+ - Full [Linux/MacOS](https://github.com/drduh/YubiKey-Guide)
+ 
+#### Quick guide 
+1 - Download and install GPG, on Windows [GPG4Win]((https://www.gpg4win.org)). We will use GPG Kleopatra to confirm key.
+
+2 - With the key on USB open command window and type:
+```bash
+gpg --card-edit
+gpg/card> admin
+gpg/card> generate
+```
+then follow the on screen instructions to generate the key, default Admin PIN is 12345678 and PIN 123456, we strongly recommend you change those.
+
+After generating the keys, confirm that keys are good and stored on the SmartCard
+
+
  
  ## Ubuntu server configuration
  
