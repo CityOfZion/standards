@@ -52,7 +52,7 @@ then follow the on screen instructions to generate the key, default Admin PIN is
 
 After generating the keys, confirm that keys are good and stored on the SmartCard
 
-
+[kleopatra](assets/nodes/kleopatra.png)
  
  ## Ubuntu server configuration
  
