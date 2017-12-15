@@ -50,9 +50,9 @@ gpg/card> generate
 ```
 then follow the on screen instructions to generate the key, default Admin PIN is 12345678 and PIN 123456, we strongly recommend you change those.
 
-After generating the keys, confirm that keys are good and stored on the SmartCard
+After generating the keys, confirm that keys are good and stored on the principal and backup SmartCards
 
-[kleopatra](assets/nodes/kleopatra.png)
+![kleopatra](assets/nodes/kleopatra.png)
  
  ## Ubuntu server configuration
  
