@@ -52,7 +52,7 @@ If other services shared a account please be sure to place the consensus node in
  
 ## Linux server configuration
  
-Every node needs 2 managers, located in different jurisdictions. Each should have a dedicated user able to login into the system and a third consensus user (not acessible by SSH) should be the only with access to the private keys for the consensus node.
+Every node needs 2 managers, located in different jurisdictions. Each should have a dedicated user able to login into the system and a third consensus user (not acessible by SSH) should be the only with access to the private keys for the consensus node (careful with the Ubuntu version, this guide uses 16.04 LTS).
 
 on first login give a strong password to root, you will only need this if sudo password is lost (or to revoke those):
 ```shell
@@ -72,7 +72,7 @@ apt-get upgrade
 CentOS:
 
 ```shell
-yum update
+dnf update
 ```
 
 add manager users (repeat for both managers):
@@ -181,9 +181,10 @@ Add user to run consensus node
 ```shell
 useradd consensus
 mkdir /home/consensus
+chown consensus:consensus /home/consensus -R
 ```
 
-Create a strong password for consensus, this should be shared in a secure way bettew managers
+Create a very strong password for consensus, this should be shared in a secure way bettew managers
 ```shell
 passwd consensus
 ```
@@ -207,8 +208,8 @@ sudo apt-get install ufw
 On CentOS:
 
 ```shell
-yum install epel-release
-yum install ufw
+dnf install epel-release
+dnf install ufw
 ```
 
 Set IPV6 to yes in `vim /etc/default/ufw` and allow only the ports 22 and 10333:
@@ -256,13 +257,13 @@ Unattended-Upgrade::Allowed-Origins {
 
 ##### On CentOS:
 
-Install yum-cron and enable it for security packges
+Install dnf-cron and enable it for security packges
 
 ```shell
-sudo yum -y install yum-cron
-sudo systemctl start yum-cron
-sudo systemctl enable yum-cron
-sudo nano /etc/yum/yum-cron.conf
+sudo dnf -y install dnf-cron
+sudo systemctl start dnf-cron
+sudo systemctl enable dnf-cron
+sudo nano /etc/dnf/dnf-cron.conf
 ```
 
 Now change it to match:
@@ -287,7 +288,7 @@ sudo apt-get install fail2ban
 On CentOS:
 
 ```shell
-yum install fail2ban
+dnf install fail2ban
 ```
 
 #### 2 Factor Authentication
@@ -301,7 +302,7 @@ sudo apt-get install libpam-google-authenticator
 On CentOS (with epel enabled - see above):
 
 ```shell
-sudo yum install google-authenticator
+sudo dnf install google-authenticator
 ```
 
 After installing follow the instructions when running the command as manager, (anwser as y/y/y/n/y), do this as both managers first, as we will update PAM to require the 2FA after this step
@@ -372,4 +373,124 @@ To access the create a SHH tunnel and open a browser to localhost:19999
 ssh -f canesin@159.100.252.102 -L 19999:159.100.252.102:19999 -N
 ```
 
+![netdata](assets/nodes/netdata.png)
 
+#### Send a email on every successful login
+
+```shell
+sudo apt-get install mailutils
+```
+
+on CentOS:
+
+```shell
+sudo dnf install mailx
+```
+
+Edit the default bash profile:
+
+```shell
+sudo vim /etc/profile
+```
+
+Add the following lines at the end of the file, edit with your email to receive login notifications:
+```shell
+SIP="$(echo $SSH_CONNECTION | cut -d " " -f 1)"
+SHOSTNAME=$(hostname)
+SNOW=$(date +"%e %b %Y, %a %r")
+
+echo 'Someone from '$SIP' logged into '$SHOSTNAME' on '$SNOW'.' | mail -s 'SSH Login Notification' YOUR@EMAIL.HERE
+```
+
+#### Logwatch
+
+Configure logwatch to send you a daily summary of the actions on the node (that should be none usally), on Ubuntu:
+
+```shell
+sudo apt-get install logwatch
+```
+
+on CentOS:
+
+```shell
+sudo dnf install logwatch
+```
+
+Add now a cron job to send your your email the summary:
+
+```shell
+sudo vim /etc/cron.daily/00logwatch
+```
+
+change the default execution to:
+
+```shell
+/usr/sbin/logwatch --output mail --mailto YOUR@EMAIL.HERE --detail high
+```
+
+#### Install and run consensus node
+
+First install the dependencies, on Ubuntu:
+
+```shell
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+sudo apt-get update
+sudo apt-get install libleveldb-dev sqlite3 libsqlite3-dev unzip
+sudo apt-get install dotnet-sdk-2.0.2
+```
+
+on CentOS:
+
+```shell
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[packages-microsoft-com-prod]\nname=packages-microsoft-com-prod \nbaseurl= https://packages.microsoft.com/yumrepos/microsoft-rhel7.3-prod\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/dotnetdev.repo'
+sudo dfn update
+sudo dfn install libunwind libicu sqlite-devel leveldb-devel unzip
+sudo dfn install dotnet-sdk-2.0.2
+```
+
+login as consensus user:
+
+```shell
+su consensus
+cd ~
+```
+
+download, verify the checksum and unzip the latests neo-cli client for your distro:
+
+```shell
+wget https://github.com/neo-project/neo-cli/releases/download/v2.5.2/neo-cli-YOURDISTRIBUTION.zip
+sha256sum neo-cli-YOURDISTRIBUTION.zip
+unzip neo-cli-YOURDISTRIBUTION.zip
+cd neo-cli
+```
+
+Now copy the setup you are running the node for (testnet or mainnet):
+
+```shell
+mv protocol.json protocol.json.back
+cp protocol.testnet.json protocol.json
+```
+
+Finally we will start the neo-cli client in a new screen open a wallet on it, this wallet file will be the one to be voted in the system.
+
+```shell
+script /dev/null
+screen
+dotnet neo-cli.dll
+neo> create wallet /home/consensus/cn_wallet.json
+password: SAMEASCONSENSUSUSER
+password: SAMEASCONSENSUSUSER
+```
+
+You will se your address and public key, copy this information. After that start consensus:
+```shell
+neo> start consensus
+```
+
+Now detach from the screen with `Ctrl+A D` you will see the fine cn_wallet.json in the home folder for consensus user.
+To reatach to the screen just use `screen -r`.
+
+That is all, now logout from the server and only login if any update must be deployed or ill-behaviour is detected.
