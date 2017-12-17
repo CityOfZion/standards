@@ -1,10 +1,5 @@
 ## Recomended setup for consensus nodes
 
-### Minimum requirements
-
-#### Passwords
-All passwords should be considered strong using this [lastpass solution](https://lastpass.com/generatepassword.php)
-
 #### Remote access
 Remote access to machines should be restricted to SSH using public-key with physical Yubico 4/NEO keys.
 
@@ -35,26 +30,45 @@ If colocation is not possible the recomended IaaS providers and configurations a
   - NET: 2 x 1 Gbps Bonded
  
 ## SSH authentication keys
-Is required the use a OpenPGP SmartCard for SSH authentication. We recomend Yubikey 4/NEO.
+Is adviced the use of a physical OpenPGP SmartCard for SSH authentication. We recomend Yubikey 4.
+For more about the habilities onf PGP on Yubikey refer to [official documentation](https://developers.yubico.com/PGP/).
+
  - Full [Windows guide](https://developers.yubico.com/PGP/SSH_authentication/Windows.html)
  - Full [Linux/MacOS](https://github.com/drduh/YubiKey-Guide)
- 
-#### Quick guide 
-1 - Download and install GPG, on Windows [GPG4Win]((https://www.gpg4win.org)). We will use GPG Kleopatra to confirm key.
 
-2 - With the key on USB open command window and type:
-```bash
-gpg --card-edit
-gpg/card> admin
-gpg/card> generate
+After add to your key to the SmartCard enabled authentication agent, gpg-agent comes bundled in gpg2 - we recomend that.
+
+#### Passwords
+Use a password manager to hold every password on this setup (Lastpass and Dashlane are recommended). All services should be setup with 2FA enabled.
+
+All passwords should be considered strong (use this [lastpass solution](https://lastpass.com/generatepassword.php)).
+
+## Service provider specific configuration:
+
+On the provider firewall (outside OS settings) setup for block all and add exceptions to ports 22 and 10333 only.
+If other services shared a account please be sure to place the consensus node in a anti-affinity group with isolated hypervisor.
+ 
+## Linux server configuration
+ 
+Every node needs 2 managers, located in different jurisdictions. Each should have a dedicated user able to login into the system and a third consensus user (not acessible by SSH) should be the only with access to the private keys for the consensus node.
+
+on first login give a strong password to root, you will only need this if sudo password is lost (or to revoke those):
+```shell
+su (or sudo su on Ubuntu)
+passwd
 ```
-then follow the on screen instructions to generate the key, default Admin PIN is 12345678 and PIN 123456, we strongly recommend you change those.
 
-After generating the keys, confirm that keys are good and stored on the principal and backup SmartCards
+update packages while in su:
 
-![kleopatra](assets/nodes/kleopatra.png)
- 
- ## Ubuntu server configuration
- 
- 
-  
+```shell
+apt-get update
+apt-get upgrade
+```
+
+still in su add managers users:
+
+```shell
+adduser canesin
+mkdir
+```
+
