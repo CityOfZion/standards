@@ -215,6 +215,7 @@ dnf install ufw
 Set IPV6 to yes in `vim /etc/default/ufw` and allow only the ports 22 and 10333:
 
 ```shell
+sudo ufw default deny incoming
 sudo ufw allow ssh
 sudo ufw allow 10333
 sudo ufw disable
@@ -370,7 +371,7 @@ bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
 To access the create a SHH tunnel and open a browser to localhost:19999
 
 ```shell
-ssh -f canesin@159.100.252.102 -L 19999:159.100.252.102:19999 -N
+ssh -f canesin@SERVERIP -L 19999:SERVERIP:19999 -N
 ```
 
 ![netdata](assets/nodes/netdata.png)
