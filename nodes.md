@@ -415,8 +415,7 @@ Add the following lines at the end of the file, edit with your email to receive 
 SIP="$(echo $SSH_CONNECTION | cut -d " " -f 1)"
 SHOSTNAME=$(hostname)
 SNOW=$(date +"%e %b %Y, %a %r")
-
-echo 'Someone from '$SIP' logged into '$SHOSTNAME' on '$SNOW'.' | mail -s 'SSH Login Notification' YOUR@EMAIL.HERE
+echo 'Someone from '$SIP' logged into '$SHOSTNAME' on '$SNOW'.' | mail -s 'SSH Login Notification' 'YOUR@EMAIL.HERE'
 ```
 
 #### Logwatch
@@ -524,6 +523,6 @@ cp supervisord.conf /etc/supervisord.conf
 sudo supervisord
 ```
 
-To make supervisord run automatically on system restart you need to add its init script, consult https://github.com/Supervisor/initscripts
+To make supervisord run automatically on system restart you need to add its [init script](https://github.com/Supervisor/initscripts).
 
 That is all, now logout from the server and only login if any update must be deployed or ill-behaviour is detected.
