@@ -515,15 +515,7 @@ on CentOS:
 sudo dnf install supervisor
 ```
 
-Now configure supervisord to execute start_consensus (edit the file if needed)
-
-```shell
-wget https://raw.githubusercontent.com/CityOfZion/standards/master/assets/nodes/supervisord.conf
-chmod 700 supervisord.conf
-cp supervisord.conf /etc/supervisord.conf
-```
-
-Now we just have to run supervisord:
+Now configure supervisord to execute start_consensus (edit the file if needed):
 
 ```shell
 wget https://raw.githubusercontent.com/CityOfZion/standards/master/assets/nodes/supervisord.conf
