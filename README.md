@@ -12,7 +12,7 @@
 
 ## Overview
 
-CoZ standards are a tool to align ourselfs as a distributed open source group, it should harmonize how communicating code issues and contributions are done and the set expectations for setups in general.
+CoZ standards are a tool to align ourselfs as a distributed open source group, it should harmonize how communicating code issues and contributions are done and set expectations for setups in general.
 
 ## Consensus nodes
 
