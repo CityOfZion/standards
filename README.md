@@ -4,15 +4,15 @@
     width="125px;">
 </p>
 
-<h1 align="center">neon-js</h1>
+<h1 align="center">Standards</h1>
 
 <p align="center">
-  Neon JavaScript SDK.
+  City of Zion (CoZ) standards.
 </p>
 
 ## Overview
 
-City of Zion (CoZ) standards to drive its activities.
+CoZ standards are a tool to align ourselfs as a distributed open source group, it should harmonize how communicating code issues and contributions are done and the set expectations for setups in general.
 
 ## Consensus nodes
 
