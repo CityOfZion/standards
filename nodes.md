@@ -47,8 +47,8 @@ After add to your key to the SmartCard enabled authentication agent, gpg-agent c
 
 ## Service provider specific configuration:
 
-On the provider firewall (outside OS settings) setup for block all and add exceptions to ports 22 and 10333 only.
-If other services shared a account please be sure to place the consensus node in a anti-affinity group with isolated hypervisor.
+On the provider firewall (outside OS settings) setup for block all and add exceptions to ports 22, 20333 and 10333 only.
+If other services shared a account please be sure to place the consensus node in a anti-affinity group.
  
 ## Linux server configuration
  
@@ -164,6 +164,7 @@ exit
 
 Back as su now lock SSH loging to public key and managers only
 
+
 ```shell
 vim /etc/ssh/sshd_config
 ```
@@ -175,9 +176,23 @@ X11Forwarding no
 PermitRootLogin no
 PasswordAuthentication no
 AllowUsers canesin
+AllowTcpForwarding no
+TCPKeepAlive no
+AllowAgentForwarding no
+DebianBanner no
+Banner /etc/ssh/sshd-banner
+```
+
+Setup a legal banner for SSH:
+
+```shell
+echo "WARNING:  Unauthorized access to this system is forbidden and will be
+prosecuted by law. By accessing this system, you agree that your actions
+may be monitored if unauthorized usage is suspected." >> /etc/ssh/sshd-banner
 ```
 
 Add user to run consensus node
+
 ```shell
 useradd consensus
 mkdir /home/consensus
@@ -212,11 +227,12 @@ dnf install epel-release
 dnf install ufw
 ```
 
-Set IPV6 to yes in `vim /etc/default/ufw` and allow only the ports 22 and 10333:
+Set IPV6 to yes in `vim /etc/default/ufw` and allow only the ports used:
 
 ```shell
 sudo ufw allow ssh
 sudo ufw allow 10333
+sudo ufw allow 20333
 sudo ufw disable
 sudo ufw enable
 ```
@@ -428,28 +444,21 @@ change the default execution to:
 /usr/sbin/logwatch --output mail --mailto YOUR@EMAIL.HERE --detail high
 ```
 
+#### Blacklist USB storage
+
+We will reduce attack surface by blacklisting unneded modules, normaly WiFi and Bluetooth are already off (verify!) server kernels so we need to disable only USB storage.
+
+```shell
+sudo vi /etc/modprobe.d/blacklist.conf
+```
+
+Add the lines:
+
+```shell
+blacklist usb-storage
+```
+
 #### Install and run consensus node
-
-First install the dependencies, on Ubuntu:
-
-```shell
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-get update
-sudo apt-get install libleveldb-dev sqlite3 libsqlite3-dev unzip
-sudo apt-get install dotnet-sdk-2.0.2
-```
-
-on CentOS:
-
-```shell
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo sh -c 'echo -e "[packages-microsoft-com-prod]\nname=packages-microsoft-com-prod \nbaseurl= https://packages.microsoft.com/yumrepos/microsoft-rhel7.3-prod\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/dotnetdev.repo'
-sudo dfn update
-sudo dfn install libunwind libicu sqlite-devel leveldb-devel unzip
-sudo dfn install dotnet-sdk-2.0.2
-```
 
 login as consensus user:
 
@@ -465,6 +474,7 @@ wget https://github.com/neo-project/neo-cli/releases/download/v2.5.2/neo-cli-YOU
 sha256sum neo-cli-YOURDISTRIBUTION.zip
 unzip neo-cli-YOURDISTRIBUTION.zip
 cd neo-cli
+chmod u+x neo-cli
 ```
 
 Now copy the setup you are running the node for (testnet or mainnet):
@@ -474,23 +484,53 @@ mv protocol.json protocol.json.back
 cp protocol.testnet.json protocol.json
 ```
 
-Finally we will start the neo-cli client in a new screen open a wallet on it, this wallet file will be the one to be voted in the system.
+If this is the first time you will need to create a wallet for consensus.
 
 ```shell
-script /dev/null
-screen
-dotnet neo-cli.dll
+./neo-cli
 neo> create wallet /home/consensus/cn_wallet.json
-password: SAMEASCONSENSUSUSER
-password: SAMEASCONSENSUSUSER
+password: SOMESTRONGPASSWORD
+password: SOMESTRONGPASSWORD
 ```
 
-You will se your address and public key, copy this information. After that start consensus:
+Now copy the start_consensus script 
+
 ```shell
-neo> start consensus
+cd ~
+wget https://raw.githubusercontent.com/CityOfZion/standards/master/assets/nodes/start_consensus.sh
+chmod u+x start_consensus.sh
 ```
 
-Now detach from the screen with `Ctrl+A D` you will see the fine cn_wallet.json in the home folder for consensus user.
-To reatach to the screen just use `screen -r`.
+Edit the contents to match your wallet file location and password.
+Now let's run it under control of supervisord, on Ubuntu:
+
+```shell
+sudo apt-cache install supervisor
+```
+
+on CentOS:
+
+```shell
+sudo dnf install supervisor
+```
+
+Now configure supervisord to execute start_consensus (edit the file if needed)
+
+```shell
+wget https://raw.githubusercontent.com/CityOfZion/standards/master/assets/nodes/supervisord.conf
+chmod 700 supervisord.conf
+cp supervisord.conf /etc/supervisord.conf
+```
+
+Now we just have to run supervisord:
+
+```shell
+wget https://raw.githubusercontent.com/CityOfZion/standards/master/assets/nodes/supervisord.conf
+chmod 700 supervisord.conf
+cp supervisord.conf /etc/supervisord.conf
+sudo supervisord
+```
+
+To make supervisord run automatically on system restart you need to add its init script, consult https://github.com/Supervisor/initscripts
 
 That is all, now logout from the server and only login if any update must be deployed or ill-behaviour is detected.
