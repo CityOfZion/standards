@@ -30,7 +30,7 @@ If colocation is not possible the recommended IaaS providers and **minimum** con
   - NET: 1 Gbps
  
 #### Passwords
-Use a password manager to hold every password on this setup (Lastpass and Dashlane are recommended). All services should be setup with 2FA enabled and with physical keys when the option is disponible.
+Use a password manager to hold every password on this setup (Lastpass and Dashlane are recommended). All services should be setup with 2FA enabled and with physical keys when the option is available.
 
 All passwords should be considered strong (use this [lastpass solution](https://lastpass.com/generatepassword.php)).
 
