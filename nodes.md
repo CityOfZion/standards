@@ -27,7 +27,7 @@ If colocation is not possible the recommended IaaS providers and **minimum** con
   - CPU: Intel Xeon E3-1275v6 - 4c/8t - 3.8GHz
   - RAM: 32 GB DDR4 ECC
   - SSD: softraid-1 2x240GB Enterprise SSD
-  - NET: 2 x 1 Gbps Bonded
+  - NET: 1 Gbps
  
 #### Passwords
 Use a password manager to hold every password on this setup (Lastpass and Dashlane are recommended). All services should be setup with 2FA enabled and with physical keys when the option is disponible.
