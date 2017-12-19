@@ -460,7 +460,17 @@ blacklist usb-storage
 
 #### Install and run consensus node
 
-login as consensus user:
+Install pre-requisites, on Ubuntu:
+```shell
+sudo apt-get install sqlite3 libsqlite3 libleveldb-dev libunwind-dev
+```
+
+on CentOS:
+```shell
+sudo dnf install leveldb-devel libunwind-devel
+```
+
+login as the consensus user:
 
 ```shell
 su consensus
