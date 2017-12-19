@@ -1,4 +1,4 @@
-## Recomended setup for consensus nodes
+## Recommended setup for consensus nodes
 
 #### Remote access
 Remote access to machines should be restricted to SSH using public-key with physical Yubico 4/NEO keys.
@@ -9,7 +9,7 @@ Prefered form is to run the nodes with colocation in high security datacenters l
 
 Since consensus nodes are the ones computing the network hardware requirements need to be reviewed periodically to guarantee that performance is optimal.
 
-If colocation is not possible the recomended IaaS providers and **minimum** configurations are listed bellow:
+If colocation is not possible the recommended IaaS providers and **minimum** configurations are listed bellow:
 
 - [OVH EG-32](https://www.ovh.com/us/dedicated-servers/infra/1801eg02.xml)
   - CPU: Intel  Xeon E3-1270v6 - 4c/8t - 3.8GHz
@@ -35,15 +35,15 @@ Use a password manager to hold every password on this setup (Lastpass and Dashla
 All passwords should be considered strong (use this [lastpass solution](https://lastpass.com/generatepassword.php)).
 
 ## SSH authentication keys
-Restricting SSH login to public keys make it as good as the keys protection, se we require the use of a physical OpenPGP SmartCard for SSH authentication. We recomend Yubikey 4.
-For more about the habilities onf PGP on Yubikey refer to [official documentation](https://developers.yubico.com/PGP/).
+Restricting SSH login to public keys make it as good as the keys protection, se we require the use of a physical OpenPGP SmartCard for SSH authentication. We recommend Yubikey 4.
+For more about the abilities of PGP on Yubikey refer to [official documentation](https://developers.yubico.com/PGP/).
 
  - Full [Windows guide](https://developers.yubico.com/PGP/SSH_authentication/Windows.html)
  - Full [Linux/MacOS](https://github.com/drduh/YubiKey-Guide)
 
 Change the defaults Admin PIN from `12345678` and PIN from `123456` to secure memorized combinations.
 
-After add to your key to the SmartCard enabled authentication agent, gpg-agent comes bundled in gpg2 - we recomend that.
+After add to your key to the SmartCard enabled authentication agent, gpg-agent comes bundled in gpg2 - we recommend that.
 
 ## Service provider specific configuration:
 
