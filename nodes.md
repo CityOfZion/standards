@@ -515,7 +515,7 @@ Edit the contents to match your wallet file location and password.
 Now let's run it under control of supervisord, on Ubuntu:
 
 ```shell
-sudo apt-cache install supervisor
+sudo apt-get install supervisor
 ```
 
 on CentOS:
