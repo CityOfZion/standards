@@ -462,7 +462,7 @@ blacklist usb-storage
 
 Install pre-requisites, on Ubuntu:
 ```shell
-sudo apt-get install unzip sqlite3 libsqlite3 libleveldb-dev libunwind-dev
+sudo apt-get install unzip sqlite3 libsqlite3-dev libleveldb-dev libunwind-dev
 ```
 
 on CentOS:
