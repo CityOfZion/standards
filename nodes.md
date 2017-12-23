@@ -72,7 +72,7 @@ apt-get upgrade
 CentOS:
 
 ```shell
-dnf update
+yum update
 ```
 
 add manager users (repeat for both managers):
@@ -223,8 +223,8 @@ sudo apt-get install ufw
 On CentOS:
 
 ```shell
-dnf install epel-release
-dnf install ufw
+sudo yum install epel-release
+sudo yum install ufw
 ```
 
 Set IPV6 to yes in `vim /etc/default/ufw` and allow only the ports used:
@@ -274,13 +274,13 @@ Unattended-Upgrade::Allowed-Origins {
 
 ##### On CentOS:
 
-Install dnf-cron and enable it for security packges
+Install yum-cron and enable it for security packges
 
 ```shell
-sudo dnf -y install dnf-cron
-sudo systemctl start dnf-cron
-sudo systemctl enable dnf-cron
-sudo nano /etc/dnf/dnf-cron.conf
+sudo yum -y install yum-cron
+sudo systemctl start yum-cron
+sudo systemctl enable yum-cron
+sudo nano /etc/yum/yum-cron.conf
 ```
 
 Now change it to match:
@@ -305,7 +305,7 @@ sudo apt-get install fail2ban
 On CentOS:
 
 ```shell
-dnf install fail2ban
+sudo yum install fail2ban
 ```
 
 #### 2 Factor Authentication
@@ -319,7 +319,7 @@ sudo apt-get install libpam-google-authenticator
 On CentOS (with epel enabled - see above):
 
 ```shell
-sudo dnf install google-authenticator
+sudo yum install google-authenticator
 ```
 
 After installing follow the instructions when running the command as manager, (anwser as y/y/y/n/y), do this as both managers first, as we will update PAM to require the 2FA after this step
@@ -401,7 +401,7 @@ sudo apt-get install mailutils
 on CentOS:
 
 ```shell
-sudo dnf install mailx
+sudo yum install mailx
 ```
 
 Edit the default bash profile:
@@ -429,7 +429,7 @@ sudo apt-get install logwatch
 on CentOS:
 
 ```shell
-sudo dnf install logwatch
+sudo yum install logwatch
 ```
 
 Add now a cron job to send your your email the summary:
@@ -467,7 +467,7 @@ sudo apt-get install unzip sqlite3 libsqlite3-dev libleveldb-dev libunwind-dev
 
 on CentOS:
 ```shell
-sudo dnf install unzip leveldb-devel libunwind-devel
+sudo yum install unzip leveldb-devel libunwind-devel
 ```
 
 login as the consensus user:
@@ -521,7 +521,7 @@ sudo apt-get install supervisor
 on CentOS:
 
 ```shell
-sudo dnf install supervisor
+sudo yum install supervisor
 ```
 
 Now configure supervisord to execute start_consensus (edit the file if needed):
