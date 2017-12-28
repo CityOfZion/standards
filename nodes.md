@@ -48,7 +48,7 @@ After add to your key to the SmartCard enabled authentication agent, gpg-agent c
 ## Service provider specific configuration:
 
 On the provider firewall (outside OS settings) setup for block all and add exceptions to ports 22, 20333 and 10333 only.
-If other services shared a account please be sure to place the consensus node in a anti-affinity group.
+If other services share the account please be sure to place the nodes in an anti-affinity group.
  
 ## Linux server configuration
  
@@ -84,7 +84,7 @@ mkdir /home/canesin/.ssh
 chmod 700 /home/canesin/.ssh
 ```
 
-This guide is based on bash so set that as prefered shell for the manager
+This guide is based on bash so set that as preferred shell for the manager
 
 ```shell
 usermod -s /bin/bash canesin
@@ -199,7 +199,7 @@ mkdir /home/consensus
 chown consensus:consensus /home/consensus -R
 ```
 
-Create a very strong password for consensus, this should be shared in a secure way bettew managers
+Create a very strong password for consensus, this should be shared in a secure way between managers
 ```shell
 passwd consensus
 ```
@@ -274,7 +274,7 @@ Unattended-Upgrade::Allowed-Origins {
 
 ##### On CentOS:
 
-Install yum-cron and enable it for security packges
+Install yum-cron and enable it for security packages
 
 ```shell
 sudo yum -y install yum-cron
@@ -296,7 +296,7 @@ on email_to insert the email you want to be warned when updates occur.
 
 #### fail2ban
 
-Now we will install fail2ban, a tool that ban IPs in iptables that have suspicious behaviour. It has sane defaults, so just installing is enough. On Ubuntu:
+Now we will install fail2ban, a tool that ban IPs in iptables that have suspicious behaviour. It has good defaults, so just installing is enough. On Ubuntu:
 
 ```shell
 sudo apt-get install fail2ban
@@ -446,7 +446,7 @@ change the default execution to:
 
 #### Blacklist USB storage
 
-We will reduce attack surface by blacklisting unneded modules, normaly WiFi and Bluetooth are already off (verify!) server kernels so we need to disable only USB storage.
+We will reduce attack surface by blacklisting unneeded modules, normally WiFi and Bluetooth are already off (verify!) server kernels so we need to disable only USB storage.
 
 ```shell
 sudo vi /etc/modprobe.d/blacklist.conf
