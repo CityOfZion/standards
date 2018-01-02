@@ -1,7 +1,9 @@
 #!/usr/bin/expect -f
 set timeout -1
 cd /home/consensus/neo-cli
-./neo-cli
+
+spawn ./neo-cli
+
 expect "neo>"
 
 # Insert here your wallet path
