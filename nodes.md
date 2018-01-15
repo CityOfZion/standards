@@ -538,3 +538,8 @@ sudo supervisord
 To make supervisord run automatically on system restart you need to add its [init script](https://github.com/Supervisor/initscripts).
 
 That is all, now logout from the server and only login if any update must be deployed or ill-behaviour is detected.
+
+#### Other Security Recommendations
+- GRUB Password
+- Disk Encryption
+- Enable TCP SYN Cookie (net.ipv4.tcp_syncookies = 1 -> /etc/sysctl.conf)
