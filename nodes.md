@@ -176,6 +176,7 @@ X11Forwarding no
 PermitRootLogin no
 PasswordAuthentication no
 AllowUsers canesin
+LoginGraceTime 30
 AllowTcpForwarding no
 TCPKeepAlive no
 AllowAgentForwarding no
@@ -328,7 +329,7 @@ After installing follow the instructions when running the command as manager, (a
 google-authenticator
 ```
 
-No edit the SSH configuration to require the 2FA setup:
+Now edit the SSH configuration to require the 2FA setup:
 
 ```shell
 sudo vim /etc/pam.d/sshd
@@ -444,7 +445,7 @@ change the default execution to:
 /usr/sbin/logwatch --output mail --mailto YOUR@EMAIL.HERE --detail high
 ```
 
-#### Blacklist USB storage
+#### Blacklist USB and Firewire storage
 
 We will reduce attack surface by blacklisting unneeded modules, normally WiFi and Bluetooth are already off (verify!) server kernels so we need to disable only USB storage.
 
@@ -456,6 +457,7 @@ Add the lines:
 
 ```shell
 blacklist usb-storage
+blacklist firewire-core
 ```
 
 #### Install and run consensus node
