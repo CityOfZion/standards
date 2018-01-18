@@ -5,11 +5,11 @@ Remote access to machines should be restricted to SSH using public-key with phys
 
 #### Hardware
 Nodes should not be run in shared machines for security concerns.
-Prefered form is to run the nodes with colocation in high security datacenters like Deltalis, Equinix and A1 Arsenal. The hardware configurations for the IaaS providers below can serve as a guideline of expectations for 2018.
+Preferred form is to run the nodes with colocation in high security datacenters like Deltalis, Equinix and A1 Arsenal. The hardware configurations for the IaaS providers below can serve as a guideline of expectations for 2018.
 
-Since consensus nodes are the ones computing the network hardware requirements need to be reviewed periodically to guarantee that performance is optimal.
+Since consensus nodes are the ones computing, the network hardware requirements need to be reviewed periodically to guarantee that performance is optimal.
 
-If colocation is not possible the recommended IaaS providers and **minimum** configurations are listed bellow:
+If colocation is not possible, the recommended IaaS providers and **minimum** configurations are listed below:
 
 - [OVH EG-32](https://www.ovh.com/us/dedicated-servers/infra/1801eg02.xml)
   - CPU: Intel  Xeon E3-1270v6 - 4c/8t - 3.8GHz
@@ -35,26 +35,26 @@ Use a password manager to hold every password on this setup (Lastpass and Dashla
 All passwords should be considered strong (use this [lastpass solution](https://lastpass.com/generatepassword.php)).
 
 ## SSH authentication keys
-Restricting SSH login to public keys make it as good as the keys protection, se we require the use of a physical OpenPGP SmartCard for SSH authentication. We recommend Yubikey 4.
-For more about the abilities of PGP on Yubikey refer to [official documentation](https://developers.yubico.com/PGP/).
+Restricting SSH login to public keys makes it as good as the keys protection, so we require the use of a physical OpenPGP SmartCard for SSH authentication. We recommend Yubikey 4.
+For more about the abilities of PGP on Yubikey, refer to [official documentation](https://developers.yubico.com/PGP/).
 
  - Full [Windows guide](https://developers.yubico.com/PGP/SSH_authentication/Windows.html)
  - Full [Linux/MacOS](https://github.com/drduh/YubiKey-Guide)
 
 Change the defaults Admin PIN from `12345678` and PIN from `123456` to secure memorized combinations.
 
-After add to your key to the SmartCard enabled authentication agent, gpg-agent comes bundled in gpg2 - we recommend that.
+After adding your key to the SmartCard enabled authentication agent, gpg-agent comes bundled in gpg2 - we recommend that.
 
 ## Service provider specific configuration:
 
-On the provider firewall (outside OS settings) setup for block all and add exceptions to ports 22, 20333 and 10333 only.
-If other services share the account please be sure to place the nodes in an anti-affinity group.
+On the provider firewall (outside OS settings), setup for block all and add exceptions to ports 22, 20333 and 10333 only.
+If other services share the account, please be sure to place the nodes in an anti-affinity group.
  
 ## Linux server configuration
  
 Every node needs 2 managers, located in different jurisdictions. Each should have a dedicated user able to login into the system and a third consensus user (not acessible by SSH) should be the only with access to the private keys for the consensus node (careful with the Ubuntu version, this guide uses 16.04 LTS).
 
-on first login give a strong password to root, you will only need this if sudo password is lost (or to revoke those):
+On first login, give a strong password to root, you will only need this if sudo password is lost (or to revoke those):
 ```shell
 su (sudo su on Ubuntu)
 passwd
@@ -62,7 +62,7 @@ passwd
 
 ### While still in su
 
-update packages, Ubuntu:
+Update packages, Ubuntu:
 
 ```shell
 apt-get update
@@ -75,7 +75,7 @@ CentOS:
 yum update
 ```
 
-add manager users (repeat for both managers):
+Add manager users (repeat for both managers):
 
 ```shell
 useradd canesin
@@ -84,13 +84,13 @@ mkdir /home/canesin/.ssh
 chmod 700 /home/canesin/.ssh
 ```
 
-This guide is based on bash so set that as preferred shell for the manager
+This guide is based on bash, so set that as preferred shell for the manager:
 
 ```shell
 usermod -s /bin/bash canesin
 ```
 
-Copy the public key of Yubikey public key from `ssh-add -L` of managers into authorized_keys
+Copy the public key of Yubikey public key from `ssh-add -L` of managers into authorized_keys:
 
 ```shell
 vim /home/canesin/.ssh/authorized_keys
@@ -103,7 +103,7 @@ chmod 400 /home/canesin/.ssh/authorized_keys
 chown canesin:canesin /home/canesin -R
 ```
 
-setup a password for managers (this will be sudo passwords)
+Setup a password for managers (this will be sudo passwords):
 
 ```shell
 passwd canesin
@@ -149,27 +149,27 @@ root    ALL=(ALL:ALL) ALL
 #includedir /etc/sudoers.d
 ```
 
-add managers to sudo group
+Add managers to sudo group:
 
 ```shell
 usermod -aG sudo canesin
 ```
 
-you will need to login and logout from manager account to update it
+You will need to login and logout from manager account to update it:
 
 ```shell
 su -l canesin
 exit
 ```
 
-Back as su now lock SSH loging to public key and managers only
+Back as su, now lock SSH login to public key and managers only:
 
 
 ```shell
 vim /etc/ssh/sshd_config
 ```
 
-This lines should be added/modified, add all managers separated by space in AllowUsers
+These lines should be added/modified, add all managers separated by space in AllowUsers:
 
 ```shell
 X11Forwarding no
@@ -192,7 +192,7 @@ prosecuted by law. By accessing this system, you agree that your actions
 may be monitored if unauthorized usage is suspected." >> /etc/ssh/sshd-banner
 ```
 
-Add user to run consensus node
+Add user to run consensus node:
 
 ```shell
 useradd consensus
@@ -200,7 +200,7 @@ mkdir /home/consensus
 chown consensus:consensus /home/consensus -R
 ```
 
-Create a very strong password for consensus, this should be shared in a secure way between managers
+Create a very strong password for consensus, this should be shared in a secure way between managers:
 ```shell
 passwd consensus
 ```
@@ -211,7 +211,7 @@ Last step as su is to reboot ssh, after that login back as a manager.
 sudo systemctl restart sshd.service
 ```
 
-### While logged as manager
+### While logged in as manager
 
 #### Firewall
 
@@ -248,7 +248,7 @@ sudo apt-get install unattended-upgrades
 sudo vim /etc/apt/apt.conf.d/10periodic
 ```
 
-update to match:
+Update to match:
 
 ```shell
 APT::Periodic::Update-Package-Lists "1";
@@ -257,13 +257,13 @@ APT::Periodic::AutocleanInterval "7";
 APT::Periodic::Unattended-Upgrade "1";
 ```
 
-Now disable non security automatic updates
+Now disable non security automatic updates:
 
 ```shell
 sudo vim /etc/apt/apt.conf.d/50unattended-upgrades
 ```
 
-update so that the only uncommented lines are:
+Update so that the only uncommented lines are:
 
 ```shell
 Unattended-Upgrade::Allowed-Origins {   
@@ -275,7 +275,7 @@ Unattended-Upgrade::Allowed-Origins {
 
 ##### On CentOS:
 
-Install yum-cron and enable it for security packages
+Install yum-cron and enable it for security packages:
 
 ```shell
 sudo yum -y install yum-cron
@@ -293,11 +293,11 @@ emit_via = email
 email_to = YOUR_EMAIL_TO_RECEIVE_UPDATE_NOTIFICATIONS
 ```
 
-on email_to insert the email you want to be warned when updates occur.
+On email_to, insert the e-mail you want to be warned when updates occur.
 
 #### fail2ban
 
-Now we will install fail2ban, a tool that ban IPs in iptables that have suspicious behaviour. It has good defaults, so just installing is enough. On Ubuntu:
+Now we will install fail2ban, a tool that bans IPs in iptables that have suspicious behaviour. It has good defaults, so just installing is enough. On Ubuntu:
 
 ```shell
 sudo apt-get install fail2ban
@@ -323,7 +323,7 @@ On CentOS (with epel enabled - see above):
 sudo yum install google-authenticator
 ```
 
-After installing follow the instructions when running the command as manager, (anwser as y/y/y/n/y), do this as both managers first, as we will update PAM to require the 2FA after this step
+After installing, follow the instructions when running the command as manager, (anwser as y/y/y/n/y), do this as both managers first, as we will update PAM to require the 2FA after this step:
 
 ```shell
 google-authenticator
@@ -335,7 +335,7 @@ Now edit the SSH configuration to require the 2FA setup:
 sudo vim /etc/pam.d/sshd
 ```
 
-Add the following line at the end of the file
+Add the following line at the end of the file:
 
 ```shell
 auth required pam_google_authenticator.so
@@ -348,32 +348,32 @@ Comment out the line about password prompt, on Ubuntu:
 #@include common-auth
 ```
 
-on CentOS:
+On CentOS:
 
 ```shell
 #auth       substack     password-auth
 ```
 
-Edit the sshd_config file to require the 2FA challenge
+Edit the sshd_config file to require the 2FA challenge:
 
 ```shell
 sudo vim /etc/ssh/sshd_config
 ```
 
-Edit file to allow challange and add line with auth methods:
+Edit file to allow challenge and add line with auth methods:
 
 ```shell
 ChallengeResponseAuthentication yes
 AuthenticationMethods publickey,password publickey,keyboard-interactive
 ```
 
-now restart SSHD service
+Now restart SSHD service:
 
 ```shell
 sudo systemctl restart sshd.service
 ```
 
-Without closing your current SSH session open another window and try to login to confirm that the setup is working correctly.
+Without closing your current SSH session, open another window and try to login to confirm that the setup is working correctly.
 
 #### Monitoring
 
@@ -385,7 +385,7 @@ Install the pre-built static version (to reduce attack surface and not have unne
 bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
 ```
 
-To access the create a SHH tunnel and open a browser to localhost:19999
+To access it, create a SHH tunnel and open a browser to localhost:19999
 
 ```shell
 ssh -f canesin@SERVERIP -L 19999:SERVERIP:19999 -N
@@ -393,13 +393,13 @@ ssh -f canesin@SERVERIP -L 19999:SERVERIP:19999 -N
 
 ![netdata](assets/nodes/netdata.png)
 
-#### Send a email on every successful login
+#### Send an e-mail on every successful login
 
 ```shell
 sudo apt-get install mailutils
 ```
 
-on CentOS:
+On CentOS:
 
 ```shell
 sudo yum install mailx
@@ -411,7 +411,8 @@ Edit the default bash profile:
 sudo vim /etc/profile
 ```
 
-Add the following lines at the end of the file, edit with your email to receive login notifications:
+Add the following lines at the end of the file, edit with your e-mail to receive login notifications:
+
 ```shell
 SIP="$(echo $SSH_CONNECTION | cut -d " " -f 1)"
 SHOSTNAME=$(hostname)
@@ -427,19 +428,19 @@ Configure logwatch to send you a daily summary of the actions on the node (that 
 sudo apt-get install logwatch
 ```
 
-on CentOS:
+On CentOS:
 
 ```shell
 sudo yum install logwatch
 ```
 
-Add now a cron job to send your your email the summary:
+Now add a cron job to send your e-mail the summary:
 
 ```shell
 sudo vim /etc/cron.daily/00logwatch
 ```
 
-change the default execution to:
+Change the default execution to:
 
 ```shell
 /usr/sbin/logwatch --output mail --mailto YOUR@EMAIL.HERE --detail high
@@ -467,19 +468,20 @@ Install pre-requisites, on Ubuntu:
 sudo apt-get install unzip sqlite3 libsqlite3-dev libleveldb-dev libunwind-dev
 ```
 
-on CentOS:
+On CentOS:
+
 ```shell
 sudo yum install unzip leveldb-devel libunwind-devel
 ```
 
-login as the consensus user:
+Login as the consensus user:
 
 ```shell
 su consensus
 cd ~
 ```
 
-download, verify the checksum and unzip the latests neo-cli client for your distro:
+Download, verify the checksum and unzip the latests neo-cli client for your distro:
 
 ```shell
 wget https://github.com/neo-project/neo-cli/releases/download/v2.5.2/neo-cli-YOURDISTRIBUTION.zip
@@ -496,7 +498,7 @@ mv protocol.json protocol.json.back
 cp protocol.testnet.json protocol.json
 ```
 
-If this is the first time you will need to create a wallet for consensus.
+If this is the first time, you will need to create a wallet for consensus:
 
 ```shell
 ./neo-cli
@@ -505,7 +507,7 @@ password: SOMESTRONGPASSWORD
 password: SOMESTRONGPASSWORD
 ```
 
-Now copy the start_consensus script 
+Now copy the start_consensus script:
 
 ```shell
 cd ~
@@ -520,7 +522,7 @@ Now let's run it under control of supervisord, on Ubuntu:
 sudo apt-get install supervisor
 ```
 
-on CentOS:
+On CentOS:
 
 ```shell
 sudo yum install supervisor
@@ -535,7 +537,7 @@ cp supervisord.conf /etc/supervisord.conf
 sudo supervisord
 ```
 
-To make supervisord run automatically on system restart you need to add its [init script](https://github.com/Supervisor/initscripts).
+To make supervisord run automatically on system restart, you need to add its [init script](https://github.com/Supervisor/initscripts).
 
 That is all, now logout from the server and only login if any update must be deployed or ill-behaviour is detected.
 
