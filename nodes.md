@@ -1,6 +1,17 @@
-## Recommended setup for consensus nodes
+## Table of Contents
 
-#### Remote access
+- [Recommended Setup for Consensus Nodes](#recommended-setup-for-consensus-nodes)
+  - [Remote Access](#remote-access)
+  - [Hardware](#hardware)
+  - [Passwords](#passwords)
+- [SSH Authentication Keys](#ssh-authentication-keys)
+- [Service Provider Specific Configuration](#service-provider-specific-configuration)
+- [Linux Server Configuration](#linux-server-configuration)
+
+
+## Recommended Setup for Consensus Nodes
+
+#### Remote Access
 Remote access to machines should be restricted to SSH using public-key with physical Yubico 4/NEO keys.
 
 #### Hardware
@@ -34,7 +45,7 @@ Use a password manager to hold every password on this setup (Lastpass and Dashla
 
 All passwords should be considered strong (use this [lastpass solution](https://lastpass.com/generatepassword.php)).
 
-## SSH authentication keys
+## SSH Authentication Keys
 Restricting SSH login to public keys makes it as good as the keys protection, so we require the use of a physical OpenPGP SmartCard for SSH authentication. We recommend Yubikey 4.
 For more about the abilities of PGP on Yubikey, refer to [official documentation](https://developers.yubico.com/PGP/).
 
@@ -45,12 +56,12 @@ Change the defaults Admin PIN from `12345678` and PIN from `123456` to secure me
 
 After adding your key to the SmartCard enabled authentication agent, gpg-agent comes bundled in gpg2 - we recommend that.
 
-## Service provider specific configuration:
+## Service Provider Specific Configuration
 
 On the provider firewall (outside OS settings), setup for block all and add exceptions to ports 22, 20333 and 10333 only.
 If other services share the account, please be sure to place the nodes in an anti-affinity group.
  
-## Linux server configuration
+## Linux Server Configuration
  
 Every node needs 2 managers, located in different jurisdictions. Each should have a dedicated user able to login into the system and a third consensus user (not acessible by SSH) should be the only with access to the private keys for the consensus node (careful with the Ubuntu version, this guide uses 16.04 LTS).
 
