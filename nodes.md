@@ -7,7 +7,18 @@
 - [SSH Authentication Keys](#ssh-authentication-keys)
 - [Service Provider Specific Configuration](#service-provider-specific-configuration)
 - [Linux Server Configuration](#linux-server-configuration)
-
+  - [While still in su](#while-still-in-su)
+  - [While logged in as manager](#while-logged-in-as-manager)
+    - [Firewall](#firewall)
+    - [Automatic Security Updates](#automatic-security-updates)
+    - [fail2ban](#fail2ban)
+    - [2 Factor Authentication](#2-factor-authentication)
+    - [Monitoring](#monitoring)
+    - [Send an e-mail on every successful login](#send-an-e-mail-on-every-successful-login)
+    - [Logwatch](#logwatch)
+    - [Blacklist USB and Firewire Storage](#blacklist-usb-and-firewire-storage)
+    - [Install and run Consensus Node](#install-and-run-consensus-node)
+  - [Other Security Recommendations](#other-security-recommendations)
 
 ## Recommended Setup for Consensus Nodes
 
@@ -250,7 +261,7 @@ sudo ufw disable
 sudo ufw enable
 ```
 
-#### Automatic security updates
+#### Automatic Security Updates
 
 ##### On Ubuntu:
 
@@ -457,7 +468,7 @@ Change the default execution to:
 /usr/sbin/logwatch --output mail --mailto YOUR@EMAIL.HERE --detail high
 ```
 
-#### Blacklist USB and Firewire storage
+#### Blacklist USB and Firewire Storage
 
 We will reduce attack surface by blacklisting unneeded modules, normally WiFi and Bluetooth are already off (verify!) server kernels so we need to disable only USB storage.
 
@@ -472,7 +483,7 @@ blacklist usb-storage
 blacklist firewire-core
 ```
 
-#### Install and run consensus node
+#### Install and run Consensus Node
 
 Install pre-requisites, on Ubuntu:
 ```shell
