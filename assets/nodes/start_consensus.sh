@@ -7,12 +7,12 @@ spawn ./neo-cli
 expect "neo>"
 
 # Insert here your wallet path
-send "open wallet /home/consensus/cn_wallet.json"
+send "open wallet /home/consensus/cn_wallet.json\n"
 
 expect "password:"
 
 # Insert here your wallet password
-send "SOMESTRONGPASSWORD"
+send "SOMESTRONGPASSWORD\n"
 
 expect "neo>"
 send "start consensus\n"
