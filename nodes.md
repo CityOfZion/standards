@@ -38,19 +38,19 @@ If colocation is not possible, the recommended IaaS providers and **minimum** co
   - RAM: 32GB DDR4 ECC 2133 MHz
   - SSD: softraid-1 2x450GB NVMe
   - NET: 1 Gbps
- 
+
 - [Packet Workhorse](https://www.packet.net/bare-metal/servers/type-1/)
   - CPU: Intel® Xeon E3-1240v5 - 4c/8t - 3.5GHz
   - RAM: 32 GB DDR3 ECC 1333 MHz
   - SSD: softraid-1 2x120GB Enterprise SSD
   - NET: 2 x 1 Gbps Bonded
- 
+
 - [Liquidweb](https://cart.liquidweb.com/configure/single-processor-1275v6)
   - CPU: Intel Xeon E3-1275v6 - 4c/8t - 3.8GHz
   - RAM: 32 GB DDR4 ECC
   - SSD: softraid-1 2x240GB Enterprise SSD
   - NET: 1 Gbps
- 
+
 #### Passwords
 Use a password manager to hold every password on this setup (Lastpass and Dashlane are recommended). All services should be setup with 2FA enabled and with physical keys when the option is available.
 
@@ -71,9 +71,9 @@ After adding your key to the SmartCard enabled authentication agent, gpg-agent c
 
 On the provider firewall (outside OS settings), setup for block all and add exceptions to ports 22, 20333 and 10333 only.
 If other services share the account, please be sure to place the nodes in an anti-affinity group.
- 
+
 ## Linux Server Configuration
- 
+
 Every node needs 2 managers, located in different jurisdictions. Each should have a dedicated user able to login into the system and a third consensus user (not acessible by SSH) should be the only with access to the private keys for the consensus node (careful with the Ubuntu version, this guide uses 16.04 LTS).
 
 On first login, give a strong password to root, you will only need this if sudo password is lost (or to revoke those):
@@ -100,35 +100,34 @@ yum update
 Add manager users (repeat for both managers):
 
 ```shell
-useradd canesin
-mkdir /home/canesin
-mkdir /home/canesin/.ssh
-chmod 700 /home/canesin/.ssh
+useradd -m node
+mkdir /home/node/.ssh
+chmod 700 /home/node/.ssh
 ```
 
 This guide is based on bash, so set that as preferred shell for the manager:
 
 ```shell
-usermod -s /bin/bash canesin
+usermod -s /bin/bash node
 ```
 
 Copy the public key of Yubikey public key from `ssh-add -L` of managers into authorized_keys:
 
 ```shell
-vim /home/canesin/.ssh/authorized_keys
+vim /home/node/.ssh/authorized_keys
 ```
 
 Setup permissions:
 
 ```shell
-chmod 400 /home/canesin/.ssh/authorized_keys
-chown canesin:canesin /home/canesin -R
+chmod 400 /home/node/.ssh/authorized_keys
+chown node:node /home/node -R
 ```
 
 Setup a password for managers (this will be sudo passwords):
 
 ```shell
-passwd canesin
+passwd node
 ```
 
 Now we will setup sudo for managers, add `%sudo` goupd and comment with `#` any other group that is not `root`.
@@ -174,13 +173,13 @@ root    ALL=(ALL:ALL) ALL
 Add managers to sudo group:
 
 ```shell
-usermod -aG sudo canesin
+usermod -aG sudo node
 ```
 
 You will need to login and logout from manager account to update it:
 
 ```shell
-su -l canesin
+su -l node
 exit
 ```
 
@@ -197,7 +196,7 @@ These lines should be added/modified, add all managers separated by space in All
 X11Forwarding no
 PermitRootLogin no
 PasswordAuthentication no
-AllowUsers canesin
+AllowUsers node
 LoginGraceTime 30
 AllowTcpForwarding no
 TCPKeepAlive no
@@ -288,9 +287,9 @@ sudo vim /etc/apt/apt.conf.d/50unattended-upgrades
 Update so that the only uncommented lines are:
 
 ```shell
-Unattended-Upgrade::Allowed-Origins {   
+Unattended-Upgrade::Allowed-Origins {
     "${distro_id}:${distro_codename}";
-    "${distro_id}:${distro_codename}-security";        
+    "${distro_id}:${distro_codename}-security";
     "${distro_id}ESM:${distro_codename}";
 };
 ```
@@ -410,7 +409,7 @@ bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh)
 To access it, create a SHH tunnel and open a browser to localhost:19999
 
 ```shell
-ssh -f canesin@SERVERIP -L 19999:SERVERIP:19999 -N
+ssh -f node@SERVERIP -L 19999:SERVERIP:19999 -N
 ```
 
 ![netdata](assets/nodes/netdata.png)
