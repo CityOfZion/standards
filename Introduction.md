@@ -5,6 +5,10 @@
  
  *<b>Note:</b> The weekly award allocation can range from $10,000-$35,000 with occasional special events that yield additional opportunities!*
   
+  
+ # Joining Developer Channels
+ Upon entering the City of Zion slack, you will be automatically added to a number of default channels.  To join development/project focused channels, follow the instructions [here](https://get.slack.help/hc/en-us/articles/205239967-Browse-and-join-channels)
+ 
  # Contributing
  
  To contribute to City of Zion and be eligible for weekly awards, you must follow these steps:
