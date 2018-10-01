@@ -7,7 +7,9 @@
   
   
  # Joining Developer Channels
- Upon entering the City of Zion slack, you will be automatically added to a number of default channels.  To join development/project focused channels, follow the instructions [here](https://get.slack.help/hc/en-us/articles/205239967-Browse-and-join-channels)
+ Upon entering the City of Zion slack, you will be automatically added to a number of default channels.  
+ 
+ <b>To join development/project focused channels, follow the instructions [here](https://get.slack.help/hc/en-us/articles/205239967-Browse-and-join-channels)</b>
  
  # Contributing
  
