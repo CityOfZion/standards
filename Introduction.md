@@ -31,13 +31,13 @@
  There are a number of roles withing the Foundation.  They are defined below:
  
  ## Advisory Board
- The advisory board is comprised of ex-council members who have beneficially left their position (due to max tenure for example).  This position is responsible to moderating the foundation and guaranteeing that the foundation charter is upheld.
+ The advisory board is comprised of ex-council members who have left their position in good standing (due to max tenure for example).  This position is responsible to moderating the foundation and guaranteeing that the foundation charter is upheld.
  
  ## Council
  The Council represents the leadership team of City of Zion.  It is comprised of a diverse team of individuals who are responsible for guiding the foundation and leading its projects.  The council is also responsible for administrative tasks like awards voting and special events.
  
  ## Maintainer
- Maintainers are comprised of the project leadership team.  They are responsible for operations of individual domains within city of zion.
+ Maintainers are comprised of the project leadership team.  They are responsible for operations of individual domains within City of Zion.
  
  ## Contributor
  Contributors are the largest group within City of Zion.  They are the individuals who contribute to project for weekly award allocations.
