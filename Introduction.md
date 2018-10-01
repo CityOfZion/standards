@@ -16,8 +16,12 @@
  1.  Join the City of Zion slack channel [here](http://cityofzion.slack.com)
  2. Work with the teams to improve the various City of Zion and Neo Projects by using the standard git-flow workflow.  Projects can be technical (like neon wallet) or non-technical (documentation). The only requirement is that the projects must be MIT liscensed 
  3. Every week, an `@channel` will be made in the `_contribution_gists` channel.  
- <b>You must create a github gist for the week and post it in the `_contribution_gists` channel upon seeing this alert.</b>
  
+    <b>You must create a github gist for the week and post it in the `_contribution_gists` channel upon seeing this alert.</b>
+ 
+    * [How to create a gist in github](https://help.github.com/articles/creating-gists/)
+    * [A formatting example](https://gist.github.com/nunojusto/67c9f316ca4606717ef2b5cae96afe30)
+     
  4. As verification that the gist was been received, an emoji will be added to the gist by someone from CoZ council. This process may take a few days so be patient.
  5. CoZ council will vote on the week's contributions and distribute awards to the community as thanks.  This may take 1-2 weeks from when your gist was posted.
  
