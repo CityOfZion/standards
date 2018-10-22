@@ -15,7 +15,7 @@
  
  To contribute to City of Zion and be eligible for weekly awards, you must follow these steps:
  
- 1.  Join the City of Zion slack channel [here](http://cityofzion.slack.com)
+ 1.  Join the City of Zion slack channel [here](https://join.slack.com/t/cityofzion/shared_invite/enQtMjcwOTUxNDc1ODU5LWU5ODBlYjhjMDNmNTE3ZDVhOTMzZDA5ODczMmEyMWNhNTdjOTFlM2Y1ZDVkYjM0NGU0OWFlNGVhOWY3ZTEzZTI)
  2. Work with the teams to improve the various City of Zion and Neo Projects by using the standard git-flow workflow.  Projects can be technical (like neon wallet) or non-technical (documentation). The only requirement is that the projects must be MIT liscensed 
  3. Every week, an `@channel` will be made in the `_contribution_gists` channel.  
  
