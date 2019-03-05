@@ -1,4 +1,10 @@
- # What is CoZ?
+<p align="center">
+  <img
+    src="http://res.cloudinary.com/vidsy/image/upload/v1503160820/CoZ_Icon_DARKBLUE_200x178px_oq0gxm.png"
+    width="125px;">
+</p>
+
+# What is CoZ?
  CoZ is a global open source blockchain development group that develops tool to enable ecosystem growth. CoZ is a unique open source initiative in that it awards contributions to its various project. Awards are distributed to the development community using a number of mechanisms with the most common being directly associated with a github issue or pull request.
   
  # How to participate:
@@ -14,6 +20,12 @@
  1. Eligible initiatives are listed [here](https://github.com/CityOfZion/standards/blob/master/Introduction.md#initiatives-eligible-for-awards).
  
  2. Each eligible repo has a project board [(example)](https://github.com/CityOfZion/neon-wallet/projects/3) of tasks with impact labels.  The impact label is correlated to tasks importance to the project as well as elligible awards for task completion.  You can either directly submit pull requests against the issues or contact the project leads in the slack channels to be assigned the tasks.
+ 
+ <p align="center">
+  <img
+    src="assets/nodes/tasks.PNG"
+   >
+</p>
  
  3. When an issue (or award justified PR) is closed out, it is moved to the [Award Distribution Project](https://github.com/orgs/CityOfZion/projects/1).  The project leads provide a comment on the Issue or PR indicating the awards for each contributor to the task.  The **Award Distribution Project** allows contributors to track the status of the award process.  
  
