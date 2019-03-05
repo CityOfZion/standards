@@ -11,7 +11,7 @@
  
  # Our award process
  
- 1. Eligible initiatives are listed below.
+ 1. Eligible initiatives are listed [here](https://github.com/CityOfZion/standards/blob/master/Introduction.md#initiatives-eligible-for-awards).
  
  2. Each eligible repo has a project board [(example)](https://github.com/CityOfZion/neon-wallet/projects/3) of tasks with impact labels.  The impact label is correlated to tasks importance to the project as well as elligible awards for task completion.  You can either directly submit pull requests against the issues or contact the project leads in the slack channels to be assigned the tasks.
  
