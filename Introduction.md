@@ -33,7 +33,7 @@ CoZ is a global open source blockchain development group that develops tool to e
  
  4. When awards for an issue have been distributed, the txid is posted on the GitHub issue or PR.  This creates a fully transparent, closed loop process for contributors and the community. [(example)](https://github.com/CityOfZion/neon-wallet/issues/1741)  
  
-   **Note:** If CoZ has not cached your address, we will reach out to acquire it.  At any time you may change your award address by contacting the leadership team.
+    **Note:** If CoZ has not cached your address, we will reach out to acquire it.  At any time you may change your award address by contacting the leadership team.
  
  
 # Initiatives Eligible for Awards
