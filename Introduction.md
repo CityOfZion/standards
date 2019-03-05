@@ -7,9 +7,9 @@
  
  2. To join development/project focused channels, follow the instructions [here](https://get.slack.help/hc/en-us/articles/205239967-Browse-and-join-channels)
  
- 3. Repos which are eligible for awards are tagged in their README
+ 3. Repos which are eligible for awards are listed below
  
- # Contributing and Awards:
+ # Our award process
  
  1. Eligible {{info on how to find these}} projects are highlighted in their project README [(example)](https://github.com/CityOfZion/neon-wallet).
  
@@ -19,7 +19,7 @@
  
  **Note:** Awards are made at the discretion of CoZ.  Labels are an indicator of approximate awards and do not represent any guarantee.
  
- 4. When awards for an issue have been distributed, the txid is posted on the github issue or PR.
+ 4. When awards for an issue have been distributed, the txid is posted on the github issue or PR.  This creates a fully transparent, closed loop process for contributors and the community.
  
  **Note:** If CoZ has not cached your address, we will reach out to acquire it.  At any time you may change your award address by contacting the leadership team.
  
