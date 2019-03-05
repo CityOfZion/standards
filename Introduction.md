@@ -3,7 +3,7 @@
   
  # How to participate:
  
- 1. Join the City of Zion slack channel [here](https://join.slack.com/t/cityofzion/shared_invite/enQtMjcwOTUxNDc1ODU5LWU5ODBlYjhjMDNmNTE3ZDVhOTMzZDA5ODczMmEyMWNhNTdjOTFlM2Y1ZDVkYjM0NGU0OWFlNGVhOWY3ZTEzZTI)
+ 1. Join the CoZ slack channel [here](https://join.slack.com/t/cityofzion/shared_invite/enQtMjcwOTUxNDc1ODU5LWU5ODBlYjhjMDNmNTE3ZDVhOTMzZDA5ODczMmEyMWNhNTdjOTFlM2Y1ZDVkYjM0NGU0OWFlNGVhOWY3ZTEzZTI)
  
  2. To join development/project focused channels, follow the instructions [here](https://get.slack.help/hc/en-us/articles/205239967-Browse-and-join-channels)
  
