@@ -1,49 +1,27 @@
- # What is City of Zion?
- City of Zion is a global open source blockchain development Foundation that supports the growth and development of the Smart Economy
- with particular emphasis on the Neo Platform.  The City of Zion has an endowment from Neo Global Development (NGD) to grow the Ecosystem.
- This endowment in distributed to the development community using a number of mechanisms with the most common being the weekly awards.  Awards are distributed to open source contributions to the Neo ecosystem on a range of projects.
- 
- *<b>Note:</b> The weekly award allocation can range from $10,000-$35,000 with occasional special events that yield additional opportunities!*
+ # What is CoZ?
+ CoZ is a global open source blockchain development group that develops tool to enable ecosystem growth. CoZ is a unique open source initiative in that it awards contributions to its various project. Awards are distributed to the development community using a number of mechanisms with the most common being directly associated with a github issue or pull request.
   
-  
- # Joining Developer Channels
- Upon entering the City of Zion slack, you will be automatically added to a number of default channels.  
+ # How to participate:
  
- <b>To join development/project focused channels, follow the instructions [here](https://get.slack.help/hc/en-us/articles/205239967-Browse-and-join-channels)</b>
+ 1. Join the City of Zion slack channel [here](https://join.slack.com/t/cityofzion/shared_invite/enQtMjcwOTUxNDc1ODU5LWU5ODBlYjhjMDNmNTE3ZDVhOTMzZDA5ODczMmEyMWNhNTdjOTFlM2Y1ZDVkYjM0NGU0OWFlNGVhOWY3ZTEzZTI)
  
- # Contributing
+ 2. <b>To join development/project focused channels, follow the instructions [here](https://get.slack.help/hc/en-us/articles/205239967-Browse-and-join-channels)</b>
  
- To contribute to City of Zion and be eligible for weekly awards, you must follow these steps:
+ 3. Repos which are eligible for awards are tagged in their README
  
- 1.  Join the City of Zion slack channel [here](https://join.slack.com/t/cityofzion/shared_invite/enQtMjcwOTUxNDc1ODU5LWU5ODBlYjhjMDNmNTE3ZDVhOTMzZDA5ODczMmEyMWNhNTdjOTFlM2Y1ZDVkYjM0NGU0OWFlNGVhOWY3ZTEzZTI)
- 2. Work with the teams to improve the various City of Zion and Neo Projects by using the standard git-flow workflow.  Projects can be technical (like neon wallet) or non-technical (documentation). The only requirement is that the projects must be MIT liscensed 
- 3. Every week, an `@channel` will be made in the `_contribution_gists` channel.  
+ # Contributing and Awards:
  
-    <b>You must create a github gist for the week and post it in the `_contribution_gists` channel upon seeing this alert.</b>
+ 1. Eligible {{info on how to find these}} projects are highlighted in their project README [(example)](https://github.com/CityOfZion/neon-wallet).
  
-    * [How to create a gist in github](https://help.github.com/articles/creating-gists/)
-    * [A formatting example](https://gist.github.com/nunojusto/67c9f316ca4606717ef2b5cae96afe30)
-     
- 4. As verification that the gist was been received, an emoji will be added to the gist by someone from CoZ council. This process may take a few days so be patient.
- 5. CoZ council will vote on the week's contributions and distribute awards to the community as thanks.  This may take 1-2 weeks from when your gist was posted.
+ 2. Each eligible repo has a project board [(example)](https://github.com/CityOfZion/neon-wallet/projects/3) of tasks with impact labels.  The impact label is correlated to tasks importance to the project as well as elligible awards for task completion.  You can either directly submit pull requests against the issues or contact the project leads in the slack channels to be assigned the tasks.
  
- # Roles
- There are a number of roles withing the Foundation.  They are defined below:
+ 3. When an issue (or award justified PR) is closed out, it is moved to the [Award Distribution Project](https://github.com/orgs/CityOfZion/projects/1).  The project leads provide a comment on the Issue or PR indicating the awards for each contributor to the task.  The **Award Distribution Project** allows contributors to track the status of the award process.
  
- ## Advisory Board
- The advisory board is comprised of ex-council members who have left their position in good standing (due to max tenure for example).  This position is responsible to moderating the foundation and guaranteeing that the foundation charter is upheld.
+ **Note:** Awards are made at the discretion of CoZ.  Labels are an indicator of approximate awards and do not represent any guarantee.
  
- ## Council
- The Council represents the leadership team of City of Zion.  It is comprised of a diverse team of individuals who are responsible for guiding the foundation and leading its projects.  The council is also responsible for administrative tasks like awards voting and special events.
+ 4. When awards for an issue have been distributed, the txid is posted on the github issue or PR.
  
- ## Maintainer
- Maintainers are comprised of the project leadership team.  They are responsible for operations of individual domains within City of Zion.
+ **Note:** If CoZ has not cached your address, we will reach out to acquire it.  At any time you may change your award address by contacting the leadership team.
  
- ## Contributor
- Contributors are the largest group within City of Zion.  They are the individuals who contribute to project for weekly award allocations.
- 
- ## Support
- Various support roles are also present within City of Zion.  These roles provide value through areas like platform security and public outreach.
 
-# Special Events!
-Periodically, the council will elect to run special events which distribute awards beyond the weekly allocation.  These may take the form of spot bonuses to incentivize work on a specific project or community competitions covering a range of topics from dApps to tutorials.
+
