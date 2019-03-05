@@ -5,7 +5,7 @@
 </p>
 
 # What is CoZ?
-CoZ is a global open source blockchain development group that develops tool to enable ecosystem growth. CoZ is a unique open source initiative in that it awards contributions to its various project. Awards are distributed to the development community using a number of mechanisms with the most common being directly associated with a GitHub issue or pull request.
+CoZ is a global open source blockchain development group that develops tool to enable ecosystem growth. CoZ is a unique open source initiative in that it awards contributions to its various project. Awards are distributed to the community using a number of mechanisms with the most common being directly associated with a GitHub issue or pull request.
   
  # How to participate:
  
