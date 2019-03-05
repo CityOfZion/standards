@@ -15,16 +15,15 @@
  
  2. Each eligible repo has a project board [(example)](https://github.com/CityOfZion/neon-wallet/projects/3) of tasks with impact labels.  The impact label is correlated to tasks importance to the project as well as elligible awards for task completion.  You can either directly submit pull requests against the issues or contact the project leads in the slack channels to be assigned the tasks.
  
- 3. When an issue (or award justified PR) is closed out, it is moved to the [Award Distribution Project](https://github.com/orgs/CityOfZion/projects/1).  The project leads provide a comment on the Issue or PR indicating the awards for each contributor to the task.  The **Award Distribution Project** allows contributors to track the status of the award process.
+ 3. When an issue (or award justified PR) is closed out, it is moved to the [Award Distribution Project](https://github.com/orgs/CityOfZion/projects/1).  The project leads provide a comment on the Issue or PR indicating the awards for each contributor to the task.  The **Award Distribution Project** allows contributors to track the status of the award process.  
  
- **Note:** Awards are made at the discretion of CoZ.  Labels are an indicator of approximate awards and do not represent any guarantee.
+   **Note:** Awards are made at the discretion of CoZ.  Labels are an indicator of approximate awards and do not represent any guarantee.
  
- 4. When awards for an issue have been distributed, the txid is posted on the github issue or PR.  This creates a fully transparent, closed loop process for contributors and the community. [(example)](https://github.com/CityOfZion/neon-wallet/issues/1741)
+ 4. When awards for an issue have been distributed, the txid is posted on the github issue or PR.  This creates a fully transparent, closed loop process for contributors and the community. [(example)](https://github.com/CityOfZion/neon-wallet/issues/1741)  
  
- **Note:** If CoZ has not cached your address, we will reach out to acquire it.  At any time you may change your award address by contacting the leadership team.
+   **Note:** If CoZ has not cached your address, we will reach out to acquire it.  At any time you may change your award address by contacting the leadership team.
  
-
-
+ 
 # Initiatives Eligible for Awards
 The following initiatives are eligible for awards.  Eligible projects are subject to changed based on community needs.
 * [Neon Wallet](https://github.com/CityOfZion/neon-wallet)
