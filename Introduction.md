@@ -30,6 +30,7 @@ The following initiatives are eligible for awards.  Eligible projects are subjec
 * [Neon Wallet](https://github.com/CityOfZion/neon-wallet)
 * [Neon-js](https://github.com/CityOfZion/neon-js)
 * [Neo-python](https://github.com/CityOfZion/neo-python)
+* [Neo-boa](https://github.com/CityOfZion/neo-boa)
 * [Neo-scan](https://github.com/CityOfZion/neo-scan)
 * [Neo-go](https://github.com/CityOfZion/neo-go)
 * [Neo-storm](https://github.com/CityOfZion/neo-storm)
