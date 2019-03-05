@@ -25,3 +25,13 @@
  
 
 
+# Initiatives Eligible for Awards
+The following initiatives are eligible for awards.  Eligible projects are subject to changed based on community needs.
+* [Neon Wallet](https://github.com/CityOfZion/neon-wallet)
+* [neon-js](https://github.com/CityOfZion/neon-js)
+* [Neo-python](https://github.com/CityOfZion/neo-python)
+* [Neo-scan](https://github.com/CityOfZion/neo-scan)
+* [Neo-go](https://github.com/CityOfZion/neo-go)
+* [Neo-storm](https://github.com/CityOfZion/neo-storm)
+* [Neo-debugger-tools](https://github.com/CityOfZion/neo-debugger-tools)
+
