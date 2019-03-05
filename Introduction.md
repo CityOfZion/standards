@@ -5,7 +5,7 @@
  
  1. Join the City of Zion slack channel [here](https://join.slack.com/t/cityofzion/shared_invite/enQtMjcwOTUxNDc1ODU5LWU5ODBlYjhjMDNmNTE3ZDVhOTMzZDA5ODczMmEyMWNhNTdjOTFlM2Y1ZDVkYjM0NGU0OWFlNGVhOWY3ZTEzZTI)
  
- 2. <b>To join development/project focused channels, follow the instructions [here](https://get.slack.help/hc/en-us/articles/205239967-Browse-and-join-channels)</b>
+ 2. To join development/project focused channels, follow the instructions [here](https://get.slack.help/hc/en-us/articles/205239967-Browse-and-join-channels)
  
  3. Repos which are eligible for awards are tagged in their README
  
